@@ -156,7 +156,7 @@ keep_drugs <- c(keep_drugs, "total")
 incb <- incb %>%
   arrange(country, year)
 incb2 <- as.data.frame(incb)
-write.csv(incb2, file.path(root_dir, "incb.csv"))
+write.csv(incb2, file.path(root_dir, "incb.csv"), row.names = F)
 
 ## ---- json-output ----
 incb2 <- dlply(incb2, .(country), function(x) {

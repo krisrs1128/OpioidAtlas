@@ -122,15 +122,6 @@ data(indicators)
 incb <- merge(incb, indicators, by = "country", all.x = T)
 incb <- arrange(incb, country, year)
 
-## ---- quantize ----
-incb$drug_sum <- rowSums(incb[, 3:21], na.rm = T)
-incb <- incb %>%
-  group_by(country, year) %>%
-  mutate(all_years_sum = sum(drug_sum))
-incb$drug_level <- cut(incb$all_years_sum,
-                       breaks = unique(quantile(incb$all_years_sum)),
-                       include.lowest = T)
-
 ## ---- normalize ----
 d3_countries <- read.csv("https://www.dropbox.com/s/j62qyi5zoxonssu/d3_match_countries.csv?dl=1")
 colnames(d3_countries) <- c("country", "json_country")

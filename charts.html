@@ -39,7 +39,6 @@
     <link href="assets/css/select.css" rel="stylesheet">
     <link href="assets/css/range.css" rel="stylesheet">
     <link href="assets/css/path.css" rel="stylesheet">
-    <link href="assets/css/ts.css" rel="stylesheet">
 
     <script src="assets/js/countries.js"></script>
     <script src="assets/js/incb.js"></script>
@@ -333,7 +332,7 @@
    updateShownTS()
 
    // add selections for cognostics
-   allRegions = ["asia", "africa", "americas", "europe", "oceania"]
+   allRegions = ["Asia", "Africa", "Americas", "Europe", "Oceania"]
    const allCogs = incb_histo[0].map(function(d) { return d["L1"] })
    fillOptions("#cogSelections #cogSelect", allCogs, false);
    fillOptions("#cogSelections #drugSelect", allDrugs, true);

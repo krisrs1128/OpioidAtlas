@@ -17,3 +17,7 @@ select {
 select:focus {
     outline: none;
 }
+
+label {
+    font-size: 14px;
+}

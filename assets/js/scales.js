@@ -12,7 +12,7 @@
 function mgToColsScale(drug, mg) {
   // fill in domain default
   if(typeof mg == "undefined") {
-    mg = [0, 0.010, 0.037, 0.139, 0.518, 1.931, 7.197, 26.827, 100, 1000]
+    mg = [1e-10, 0.010, 0.037, 0.139, 0.518, 1.931, 7.197, 26.827, 100, 1000]
     // round(10 ^ seq(-2, log(100, 10), length.out = 8), 3), with 0, and 1000 at start and end
   }
 

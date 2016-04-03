@@ -191,64 +191,20 @@
   		    <p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
 		  </div>
 		</div>
-	      </div>	
-  	      <br>
-    	      <div class="row">
-      		<div class="col-lg-12">
-		  <div class="bs-component">	
-		    <h2>Temporal Opioid Consumption Patterns</h2>
-  		    <p class="text-muted"> Msjnnxmnj After each countrie's data point  appears in the chart.  Click on each countries data point to view more detailed trends.  The country you selected from the dot chart will appear in the foreground and all other countries will appear muted in the background of the line chart.</p>
-		  </div>
-		</div>
-	      </div>	
-
-  	      <div id="locRegSelect">
-		<form class="well" style="width:200px">
-		  <label> Opioid <br>
-    		    <select class="chzn-select" multiple="true" id="drugSelect"></select>
-		  </label>
-		  <label> Region <br>
-    		    <select class="chzn-select" multiple="true" id="regionSelect"></select>
-		  </label>
-      		  <label id="locRegYearInput">
-		    <text>Year: 1989</text>
-		    <input type="range" min="1989" max="2013" value="1989" id="locRegSlider", oninput="updateLocReg()">
-      		  </label>
-		</form>
-  	      </div>
-	      
-	      <div class="row">
-      		<div class="col-lg-6">
-		  <div class="bs-component">
-   		    <div class="row-fluid">
-      		      <div class="span6", id="locRegScatter"></div>
-          	      <p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
-  		    </div>         		 
-		  </div>
-       		</div>
-		<div class="col-lg-6">
-       		  <div class="bs-component">
-		    <div class="row-fluid">
-      		      <div class="span6", id="locRegSeries"></div>
-		      <p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
-  		    </div> 
-		  </div>
-		</div>
-	      </div>		
-
+	      </div>
 	    </div>
+  	    <br>
+
     	    <div class="row">
       	      <div class="col-lg-12">
-        	<div class="bs-component">	
-		  <h2>Opioid Consumption Clusters</h2>
-  		  <p class="text-muted"> Based on thier opiate conumption data, the chart below uses a statistical method, called 
-  		    multi-dimensional scaling (MDS), to visualize the level of similarity between countries in the same continent, or among multiple 
-  		    continents.   To vizualize opiate consumption "clusters" in the chart on the left, indicate continent and opioid classes information in the selection box below. </p>
+		<div class="bs-component">	
+		  <h2>Temporal Opioid Consumption Patterns</h2>
+  		  <p class="text-muted"> After each country's data point  appears in the chart.  Click on each countries data point to view more detailed trends.  The country you selected from the dot chart will appear in the foreground and all other countries will appear muted in the background of the line chart.</p>
 		</div>
 	      </div>
-	    </div>			
+	    </div>	
 
-  	    <div id="mdsSelect">
+  	    <div id="locRegSelect">
 	      <form class="well" style="width:200px">
 		<label> Opioid <br>
     		  <select class="chzn-select" multiple="true" id="drugSelect"></select>
@@ -256,44 +212,88 @@
 		<label> Region <br>
     		  <select class="chzn-select" multiple="true" id="regionSelect"></select>
 		</label>
+      		<label id="locRegYearInput">
+		  <text>Year: 1989</text>
+		  <input type="range" min="1989" max="2013" value="1989" id="locRegSlider", oninput="updateLocReg()">
+      		</label>
 	      </form>
   	    </div>
-	  </div>
-
-	  <div class="row">
-      	    <div class="col-lg-6">
-              <div class="bs-component">
-   		<div class="row-fluid">
-      		  <div class="span6", id="mdsScatter"></div>
-          	  <p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
-  		</div>         		 
+	    
+	    <div class="row">
+      	      <div class="col-lg-6">
+		<div class="bs-component">
+   		  <div class="row-fluid">
+      		    <div class="span6", id="locRegScatter"></div>
+          	    <p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
+  		  </div>         		 
+		</div>
+       	      </div>
+	      <div class="col-lg-6">
+       		<div class="bs-component">
+		  <div class="row-fluid">
+      		    <div class="span6", id="locRegSeries"></div>
+		    <p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
+  		  </div> 
+		</div>
 	      </div>
-       	    </div>
-	    <div class="col-lg-6">
-       	      <div class="bs-component">
-		<div class="row-fluid">
-      		  <div class="span6", id="mdsSeries"></div>
-        	  <p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
-  		</div> 
+	    </div>		
+
+	  </div>
+    	  <div class="row">
+      	    <div class="col-lg-12">
+              <div class="bs-component">	
+		<h2>Opioid Consumption Clusters</h2>
+  		<p class="text-muted"> Based on thier opiate conumption data, the chart below uses a statistical method, called 
+  		  multi-dimensional scaling (MDS), to visualize the level of similarity between countries in the same continent, or among multiple 
+  		  continents.   To vizualize opiate consumption "clusters" in the chart on the left, indicate continent and opioid classes information in the selection box below. </p>
 	      </div>
 	    </div>
 	  </div>			
 
+  	  <div id="mdsSelect">
+	    <form class="well" style="width:200px">
+	      <label> Opioid <br>
+    		<select class="chzn-select" multiple="true" id="drugSelect"></select>
+	      </label>
+	      <label> Region <br>
+    		<select class="chzn-select" multiple="true" id="regionSelect"></select>
+	      </label>
+	    </form>
+  	  </div>
 	</div>
+
+	<div class="row">
+      	  <div class="col-lg-6">
+            <div class="bs-component">
+   	      <div class="row-fluid">
+      		<div class="span6", id="mdsScatter"></div>
+          	<p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
+  	      </div>         		 
+	    </div>
+       	  </div>
+	  <div class="col-lg-6">
+       	    <div class="bs-component">
+	      <div class="row-fluid">
+      		<div class="span6", id="mdsSeries"></div>
+        	<p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
+  	      </div> 
+	    </div>
+	  </div>
       </div>
     </div>
-    <hr>
-    <footer>
-      <div class="row">
-	<div class="col-lg-12">
-	  <p>Made by <a href="http://stanford.edu/group/stats-for-good/" rel="nofollow">Stanford Stats for Good</a> in collaboration with <a href="http://globalonc.org/">Global Oncology Initiative (GO!)</a>.</p>
-	  <p>Code can be downloaded from our <a href="https://github.com/krisrs1128/OpioidDataBrowser">GitHub repository</a> and is released under the <a href="https://github.com">MIT License</a>.</p>
+</div>
+<hr>
+<footer>
+  <div class="row">
+    <div class="col-lg-12">
+      <p>Made by <a href="http://stanford.edu/group/stats-for-good/" rel="nofollow">Stanford Stats for Good</a> in collaboration with <a href="http://globalonc.org/">Global Oncology Initiative (GO!)</a>.</p>
+      <p>Code can be downloaded from our <a href="https://github.com/krisrs1128/OpioidDataBrowser">GitHub repository</a> and is released under the <a href="https://github.com">MIT License</a>.</p>
 
-	  
-	</div>
-      </div>
+      
+    </div>
+  </div>
 
-    </footer>
+</footer>
 </div>
 
 <script type="text/javascript">

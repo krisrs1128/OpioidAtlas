@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <title>Opoiod Data Browser</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,23 +10,23 @@
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
-      <script src="../bower_components/respond/dest/respond.min.js"></script>
-    <![endif]-->
+	<script src="../bower_components/html5shiv/dist/html5shiv.js"></script>
+	<script src="../bower_components/respond/dest/respond.min.js"></script>
+	<![endif]-->
     <script src="yeti_files/ga.js" async="" type="text/javascript"></script>
     <script>
 
-     var _gaq = _gaq || [];
+      var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-23019901-1']);
       _gaq.push(['_setDomainName', "bootswatch.com"]);
-        _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_setAllowLinker', true]);
       _gaq.push(['_trackPageview']);
 
-     (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
+      (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
     </script>
 
@@ -92,281 +92,287 @@
       <div class="page-header" id="banner">
         <div class="row">
           <div class="col-lg-12">
-              <h1>Opioid Map</h1>
-              <h2>Explore country-level consumption trends by opioid class and year</h2>
-              <p class="text-muted">  Explore country-level consumption trends by hovering over different geographic location in the Opioid Map.  Use the dropdown menu to select specific opioid classes and the Year slider to visualize global consumption 
-              	patterns for a given year.  All opioid consumption levels are reported in milligrams per person.</p>
-	      			<br>
+            <h1>Opioid Map</h1>
+            <h2>Explore country-level consumption trends by opioid class and year</h2>
+            <p class="text-muted">  Explore country-level consumption trends by hovering over different geographic location in the Opioid Map.  Use the dropdown menu to select specific opioid classes and the Year slider to visualize global consumption 
+              patterns for a given year.  All opioid consumption levels are reported in milligrams per person.</p>
+	    <br>
           </div>
         </div>
-        <div class="row">
-        	<div class="col-lg-12">
-						<!-- Chart 1========================== -->
-						<div>
-							<form id="mapSelect" class="well" style="width:250px">
-      					<label id="mapDrugInput">Opioid<select class="chzn-select" id="drugSelect"></select></label>
-      					<label id="mapYearInput"><text>Year: 1989</text><input type="range" min="1989" max="2013" value="1989" id="mapSlider", oninput="updateMapColors()"></label>
-      				</form>
-  					</div>
-  					<div class="row">
-    					<div id="map">
-    					</div>
-  					</div>
-  					<br>
-  					<div id ="region" class="container">
-  					<hr>
-  					<br><br>
-							<h1>Regional Trends</h1>
-  						<h2>Visualize longitudional trends in opioid cosumption by country or region.</h2>
-  						<p class="text-muted"> Use the selection box at the bottom of the chart to visualize trends by country and 
-  							opiate class.  To download the data shown in the chart, move your mouse over a data point to highlight the series.  
-  							After you've made your selection, and option to download your data will appear.  All country names are abbreviated 
-  							using standard three letter country codes.</p>
-  						<div class="row-fluid", id="mapSelect">
-      					<div class="span12", id="tsRegions">
-      					</div>
-  						</div>
-  						<br>
-  						<div class ="row-fluid" id="tsSelect">
-      					<div class="span2">
-    							<select class="chzn-select" multiple="true" id="drugSelect"></select>
-      					</div>
-      					<div class="span5">
-    						<select class="chzn-select" multiple="true" id="regionSelect"></select>
-      					</div>
-  						</div>
-  					
-						</div>
-						<br>
-						  				
-    <div id = "cogs" class="container">
-  	 <hr>
-  		<br>
-    	<div class="row">
-      	<div class="col-lg-12">
-        	<div class="bs-component">	
-		  			<h1>Cognostics</h1>
-  					<p class="text-muted"> "Cognostics" are computer guiding diagnostics that prioritize the review of exploratory plots 
-  						generated from large and complex datasets.   We provide three cognostic plots that can be used to systematically explore
-  						opoiod consumption trends. </p>
-  					<h2>Key Trends by Continent</h2>
-  					<p class="text-muted"> To visualize key consumption trends, provide continent and opiate class information in the 
-  						selection box below.  Then, use the dropdown to choose from alternative cognostics to display in the chart on the right. </p>
-					</div>
-				</div>
-			</div>
-			
-      <div class="row">
-      	<div class="col-lg-6">
-        	<div class="bs-component">
-						<div class="row-fluid">
-      				<div class="span6", id="cognostics"></div>
-      				<p class="text-muted">Each country in the continent you selected appears as a dot above.  Click on a dot to view detailed trends for the country in the chart on the right. </p>
-   					
-  					</div>         		 
-					</div>
-       	</div>
-        <div class="col-lg-6">
-       	<div class="bs-component">
-					<div class="row-fluid">
-      			<div class="span6", id="cognosticsSeries"></div>
-  				</div> 
-  				<p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
-        </div>
-        </div>
-      </div>	
-      <br>
-  		<div class ="row-fluid" id="cogSelections">
-      	<div class="span2">
-    			<select class="chzn-select" id="cogSelect"></select>
-      	</div>
-      	<div class="span2">
-    			<select class="chzn-select" multiple="true" id="drugSelect"></select>
-      	</div>
-     	 	<div class="span2">
-    			<select class="chzn-select" multiple="true" id="regionSelect"></select>
-      	</div>
-  		</div>
-      <br>
-      <br>
-    	<div class="row">
-      	<div class="col-lg-12">
-        	<div class="bs-component">	
-						<h2>Opioid Consumption Clusters</h2>
-  					<p class="text-muted"> Based on thier opiate conumption data, the chart below uses a statistical method, called 
-  						multi-dimensional scaling (MDS), to visualize the level of similarity between countries in the same continent, or among multiple 
-  						continents.   To vizualize opiate consumption "clusters" in the chart on the left, indicate continent and opioid classes information in the selection box below. </p>
-					</div>
-				</div>
-			</div>			
-			
-      <div class="row">
-      	<div class="col-lg-6">
-        	<div class="bs-component">
-   					<div class="row-fluid">
-      				<div class="span6", id="mdsScatter"></div>
-          	  <p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
-  					</div>         		 
-					</div>
-       	</div>
-        <div class="col-lg-6">
-       	<div class="bs-component">
-					<div class="row-fluid">
-      			<div class="span6", id="mdsSeries"></div>
-        	<p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
-  				</div> 
-        </div>
-        </div>
-      </div>			
-
-
-  		<div class ="row-fluid" id="mdsSelect">
-    		<div class="span4">
-      	<select class="chzn-select" multiple="true" id="drugSelect"></select>
-    	</div>
-    	<div class="span4">
-      	<select class="chzn-select" multiple="true" id="regionSelect"></select>
-    	</div>
-  		</div>
-  		<br>
-  		      <br>
-    	<div class="row">
-      	<div class="col-lg-12">
-        	<div class="bs-component">	
-						<h2>Temporal Opioid Consumption Patterns</h2>
-  					<p class="text-muted"> Msjnnxmnj After each countrie's data point  appears in the chart.  Click on each countries data point to view more detailed trends.  The country you selected from the dot chart will appear in the foreground and all other countries will appear muted in the background of the line chart.</p>
-					</div>
-				</div>
-			</div>	
-				
-      <div class="row">
-      	<div class="col-lg-6">
-        	<div class="bs-component">
-   					<div class="row-fluid">
-      				<div class="span6", id="locRegScatter"></div>
-          	  <p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
-  					</div>         		 
-					</div>
-       	</div>
-        <div class="col-lg-6">
-       	<div class="bs-component">
-					<div class="row-fluid">
-      			<div class="span6", id="locRegSeries"></div>
-						<p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
-  				</div> 
-        </div>
-        </div>
-      </div>		
-
-  		<div class ="row-fluid" id="locRegSelect">
-    		<div class="span4">
-      		<label id="locRegYearInput">
-						<text>Year: 1989</text>
-						<input type="range" min="1989" max="2013" value="1989" id="locRegSlider", oninput="updateLocReg()">
-      		</label>
-    		</div>
-    		<br>
-    		<div class="span4">
-      		<select class="chzn-select" multiple="true" id="drugSelect"></select>
-    		</div>
-    		<div class="span4">
-      		<select class="chzn-select" multiple="true" id="regionSelect"></select>
-    		</div>
-  		</div>
-						</div>
-					</div>
-        </div>
-      </div>
-			<hr>
-      <footer>
         <div class="row">
           <div class="col-lg-12">
-            <p>Made by <a href="http://stanford.edu/group/stats-for-good/" rel="nofollow">Stanford Stats for Good</a> in collaboration with <a href="http://globalonc.org/">Global Oncology Initiative (GO!)</a>.</p>
-            <p>Code can be downloaded from our <a href="https://github.com">GitHub repository</a> and is released under the <a href="https://github.com">MIT License</a>.</p>
+	    <!-- Chart 1========================== -->
+	    <div>
+	      <form id="mapSelect" class="well" style="width:150px">
+      		<label id="mapDrugInput">Opioid<br><select class="chzn-select" id="drugSelect" style="width:110px"></select></label>
+      		<label id="mapYearInput"><text>Year: 1989</text><input type="range" min="1989" max="2013" value="1989" id="mapSlider", oninput="updateMapColors()" style="width:120px"></label>
+      	      </form>
+  	    </div>
+  	    <div class="row">
+    	      <div id="map">
+    	      </div>
+  	    </div>
+  	    <br>
+  	    <div id ="region" class="container">
+  	      <hr>
+  	      <br><br>
+	      <h1>Regional Trends</h1>
+  	      <h2>Visualize longitudional trends in opioid cosumption by country or region.</h2>
+  	      <p class="text-muted"> Use the selection box at the bottom of the chart to visualize trends by country and 
+  		opiate class.  To download the data shown in the chart, move your mouse over a data point to highlight the series.  
+  		After you've made your selection, and option to download your data will appear.  All country names are abbreviated 
+  		using standard three letter country codes.</p>
 
- 
-          </div>
-        </div>
+  	      <div id="tsRegions">
+		<form id="tsSelect" class="well" style="width:200px">
+		  <label> Opioid
+		    <br>
+    		    <select class="chzn-select" multiple="true" id="drugSelect"></select>
+		  </label>
+		  <label>
+		    Region
+		    <br>
+    		    <select class="chzn-select" multiple="true" id="regionSelect"></select>
+		  </label>
+		</form>
+  	      </div>
+	    </div>
+	    <br>
+	    
+	    <div id = "cogs" class="container">
+  	      <hr>
+  	      <br>
+    	      <div class="row">
+      		<div class="col-lg-12">
+        	  <div class="bs-component">	
+		    <h1>Cognostics</h1>
+  		    <p class="text-muted"> "Cognostics" are computer guiding diagnostics that prioritize the review of exploratory plots 
+  		      generated from large and complex datasets.   We provide three cognostic plots that can be used to systematically explore
+  		      opoiod consumption trends. </p>
+  		    <h2>Key Trends by Continent</h2>
+  		    <p class="text-muted"> To visualize key consumption trends, provide continent and opiate class information in the 
+  		      selection box below.  Then, use the dropdown to choose from alternative cognostics to display in the chart on the right. </p>
+		  </div>
+		</div>
+	      </div>
 
-      </footer>
+  	      <div id="cogSelections">
+		<form class="well" style="width:200px">
+		  <label> Cognostic <br>
+    		    <select class="chzn-select" id="cogSelect"></select>
+		  </label>
+		  <label> Opioid <br>
+    		    <select class="chzn-select" multiple="true" id="drugSelect"></select>
+		  </label>
+		  <label> Region <br>
+    		    <select class="chzn-select" multiple="true" id="regionSelect"></select>
+		  </label>
+		</form>
+  	      </div>
+	    </div>
+	    <br>
+	    
+	    <div class="row">
+      	      <div class="col-lg-6">
+        	<div class="bs-component">
+		  <div class="row-fluid">
+      		    <div class="span6", id="cognostics"></div>
+      		    <p class="text-muted">Each country in the continent you selected appears as a dot above.  Click on a dot to view detailed trends for the country in the chart on the right. </p>
+   		    
+  		  </div>         		 
+		</div>
+       	      </div>
+	      <div class="col-lg-6">
+       		<div class="bs-component">
+		  <div class="row-fluid">
+      		    <div class="span6", id="cognosticsSeries"></div>
+  		  </div> 
+  		  <p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
+		</div>
+	      </div>
+	    </div>	
+	    <br>
+
+    	    <div class="row">
+      	      <div class="col-lg-12">
+        	<div class="bs-component">	
+		  <h2>Opioid Consumption Clusters</h2>
+  		  <p class="text-muted"> Based on thier opiate conumption data, the chart below uses a statistical method, called 
+  		    multi-dimensional scaling (MDS), to visualize the level of similarity between countries in the same continent, or among multiple 
+  		    continents.   To vizualize opiate consumption "clusters" in the chart on the left, indicate continent and opioid classes information in the selection box below. </p>
+		</div>
+	      </div>
+	    </div>			
+
+  	    <div id="mdsSelect">
+	      <form class="well" style="width:200px">
+		<label> Opioid <br>
+    		  <select class="chzn-select" multiple="true" id="drugSelect"></select>
+		</label>
+		<label> Region <br>
+    		  <select class="chzn-select" multiple="true" id="regionSelect"></select>
+		</label>
+	      </form>
+  	    </div>
+	  </div>
+
+	  <div class="row">
+      	    <div class="col-lg-6">
+              <div class="bs-component">
+   		<div class="row-fluid">
+      		  <div class="span6", id="mdsScatter"></div>
+          	  <p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
+  		</div>         		 
+	      </div>
+       	    </div>
+	    <div class="col-lg-6">
+       	      <div class="bs-component">
+		<div class="row-fluid">
+      		  <div class="span6", id="mdsSeries"></div>
+        	  <p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
+  		</div> 
+	      </div>
+	    </div>
+	  </div>			
+
+  	  <br>
+  	  <br>
+    	  <div class="row">
+      	    <div class="col-lg-12">
+              <div class="bs-component">	
+		<h2>Temporal Opioid Consumption Patterns</h2>
+  		<p class="text-muted"> Msjnnxmnj After each countrie's data point  appears in the chart.  Click on each countries data point to view more detailed trends.  The country you selected from the dot chart will appear in the foreground and all other countries will appear muted in the background of the line chart.</p>
+	      </div>
+	    </div>
+	  </div>	
+
+  	  <div id="locRegSelect">
+	    <form class="well" style="width:200px">
+	      <label> Opioid <br>
+    		<select class="chzn-select" multiple="true" id="drugSelect"></select>
+	      </label>
+	      <label> Region <br>
+    		<select class="chzn-select" multiple="true" id="regionSelect"></select>
+	      </label>
+      	      <label id="locRegYearInput">
+		<text>Year: 1989</text>
+		<input type="range" min="1989" max="2013" value="1989" id="locRegSlider", oninput="updateLocReg()">
+      	      </label>
+	    </form>
+  	  </div>
+	  
+	  <div class="row">
+      	    <div class="col-lg-6">
+              <div class="bs-component">
+   		<div class="row-fluid">
+      		  <div class="span6", id="locRegScatter"></div>
+          	  <p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
+  		</div>         		 
+	      </div>
+       	    </div>
+	    <div class="col-lg-6">
+       	      <div class="bs-component">
+		<div class="row-fluid">
+      		  <div class="span6", id="locRegSeries"></div>
+		  <p class="text-muted">The country you selected on the right chart will appear in the foreground.  All other countries appear muted in the background.</p>
+  		</div> 
+	      </div>
+	    </div>
+	  </div>		
+
+	</div>
+      </div>
     </div>
+</div>
+<hr>
+<footer>
+  <div class="row">
+    <div class="col-lg-12">
+      <p>Made by <a href="http://stanford.edu/group/stats-for-good/" rel="nofollow">Stanford Stats for Good</a> in collaboration with <a href="http://globalonc.org/">Global Oncology Initiative (GO!)</a>.</p>
+      <p>Code can be downloaded from our <a href="https://github.com">GitHub repository</a> and is released under the <a href="https://github.com">MIT License</a>.</p>
 
-  <script type="text/javascript">
-   // draw for the first time
-   const map = $("#map");
-   const ts = $("#ts");
-   const tsRegions = $("#tsRegions");
-   const cognostics = $("#cognostics");
-   const mds = $("#mdsScatter");
-   const mdsSeries = $("#mdsSeries");
-   const locReg = $("#locRegScatter");
-   const locRegSeries = $("#locRegSeries");
+      
+    </div>
+  </div>
 
-   setupSVG("#mdsScatter", .95 * mds.width(), .6 * mds.width(), "#F7F7F7");
-   setupSVG("#mdsSeries", .95 * mdsSeries.width(), .6 * mdsSeries.width(), "#F7F7F7");
+</footer>
+</div>
 
-   setupSVG("#locRegScatter", .95 * locReg.width(), .6 * locReg.width(), "#F7F7F7");
-   setupSVG("#locRegSeries", .95 * locRegSeries.width(), .6 * locRegSeries.width(), "#F7F7F7");
+<script type="text/javascript">
+  // draw for the first time
+  const map = $("#map");
+  const ts = $("#ts");
+  const tsRegions = $("#tsRegions");
+  const cognostics = $("#cognostics");
+  const mds = $("#mdsScatter");
+  const mdsSeries = $("#mdsSeries");
+  const locReg = $("#locRegScatter");
+  const locRegSeries = $("#locRegSeries");
 
-   setupMapVis(incb, countries, map.width(), .35 * map.width());
-   setupSVG("#tsRegions", tsRegions.width(), 0.4 * tsRegions.width(), "#F7F7F7");
-   setupSVG("#cognostics", cognostics.width(), 0.6 * cognostics.width(), "#F7F7F7");
-   setupSVG("#cognosticsSeries", cognostics.width(), 0.6 * cognostics.width(), "#F7F7F7");
+  setupSVG("#mdsScatter", .95 * mds.width(), .6 * mds.width(), "#F7F7F7");
+  setupSVG("#mdsSeries", .95 * mdsSeries.width(), .6 * mdsSeries.width(), "#F7F7F7");
 
-   // add selections for map
-   allDrugs = Object.keys(incb[0].ts);
-   allDrugs.shift();
-   fillOptions("#mapSelect #drugSelect", allDrugs, false);
-   $("#mapSelect #drugSelect").on("change", updateMapColors);
+  setupSVG("#locRegScatter", .95 * locReg.width(), .6 * locReg.width(), "#F7F7F7");
+  setupSVG("#locRegSeries", .95 * locRegSeries.width(), .6 * locRegSeries.width(), "#F7F7F7");
 
-   // draw the map
-   updateMapColors();
+  setupMapVis(incb, countries, map.width(), .35 * map.width());
+  setupSVG("#tsRegions", tsRegions.width(), 0.4 * tsRegions.width(), "#F7F7F7");
+  setupSVG("#cognostics", cognostics.width(), 0.6 * cognostics.width(), "#F7F7F7");
+  setupSVG("#cognosticsSeries", cognostics.width(), 0.6 * cognostics.width(), "#F7F7F7");
 
-   // add selections for trends
-   allSubregions = ['Afghanistan','Albania','Algeria','Angola','Argentina','Armenia','Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bhutan','Bolivia','Bosnia and Herz.','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Myanmar','Burundi','Cambodia','Cameroon','Canada','Cape Verde','Central African Rep.','Chad','Chile','China','Colombia','Comoros','Congo','Costa Rica','Croatia','Cuba','Cyprus','Czech Rep.','Dem. Rep. Congo','Denmark','Djibouti','Dominican Rep.','Ecuador','Egypt','El Salvador','Eq. Guinea','Eritrea','Estonia','Ethiopia','Fiji','Finland','France','Fr. Polynesia','Gabon','Gambia','Georgia','Germany','Ghana','Greece','Grenada','Guatemala','Guinea','Guinea-Bissau','Guyana','Haiti','Honduras','Hong Kong','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Israel','Italy','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Dem. Rep. Korea','Korea','Kyrgyzstan','Lao PDR','Latvia','Lebanon','Lesotho','Libya','Lithuania','Luxembourg','Madagascar','Malawi','Malaysia','Mali','Mauritania','Mauritius','Mexico','Mongolia','Montenegro','Morocco','Mozambique','Namibia','Nepal','Netherlands','New Caledonia','New Zealand','Nicaragua','Niger','Nigeria','Norway','Oman','Pakistan','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Poland','Portugal','Qatar','Moldova','Romania','Russia','Rwanda','St. Vin. and Gren.','Samoa','S<U+00E3>o Tom<U+00E9> and Principe','Saudi Arabia','Senegal','Serbia','Sierra Leone','Singapore','Slovakia','Slovenia','Solomon Is.','South Africa','Spain','Sri Lanka','Sudan','Suriname','Swaziland','Sweden','Switzerland','Syria','Tajikistan','Thailand','Macedonia','Togo','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Uganda','Ukraine','United Kingdom','Tanzania','United States','United Arab Emirates','Uruguay','Uzbekistan','Vanuatu','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe']
+  // add selections for map
+  allDrugs = Object.keys(incb[0].ts);
+  allDrugs.shift();
+  fillOptions("#mapSelect #drugSelect", allDrugs, false);
+  $("#mapSelect #drugSelect").on("change", updateMapColors);
 
-   fillOptions("#tsSelect #drugSelect", allDrugs, false);
-   fillOptions("#tsSelect #regionSelect", allSubregions, false);
-   $("#tsSelect #drugSelect").on("change", updateShownTS)
-   $("#tsSelect #regionSelect").on("change", updateShownTS);
-   updateShownTS()
+  // draw the map
+  updateMapColors();
 
-   // add selections for cognostics
-   allRegions = ["Asia", "Africa", "Americas", "Europe", "Oceania"]
-   const allCogs = incb_histo[0].map(function(d) { return d["L1"] })
-   fillOptions("#cogSelections #cogSelect", allCogs, false);
-   fillOptions("#cogSelections #drugSelect", allDrugs, true);
-   fillOptions("#cogSelections #regionSelect", allRegions, false);
-   $("#cogSelections #regionSelect").on("change", updateCognostics);
-   $("#cogSelections #cogSelect").on("change", updateCognostics);
-   $("#cogSelections #drugSelect").on("change", updateCognostics);
-   updateCognostics()
+  // add selections for trends
+  allSubregions = ['Afghanistan','Albania','Algeria','Angola','Argentina','Armenia','Australia','Austria','Azerbaijan','Bahamas','Bahrain','Bangladesh','Barbados','Belarus','Belgium','Belize','Benin','Bhutan','Bolivia','Bosnia and Herz.','Botswana','Brazil','Brunei','Bulgaria','Burkina Faso','Myanmar','Burundi','Cambodia','Cameroon','Canada','Cape Verde','Central African Rep.','Chad','Chile','China','Colombia','Comoros','Congo','Costa Rica','Croatia','Cuba','Cyprus','Czech Rep.','Dem. Rep. Congo','Denmark','Djibouti','Dominican Rep.','Ecuador','Egypt','El Salvador','Eq. Guinea','Eritrea','Estonia','Ethiopia','Fiji','Finland','France','Fr. Polynesia','Gabon','Gambia','Georgia','Germany','Ghana','Greece','Grenada','Guatemala','Guinea','Guinea-Bissau','Guyana','Haiti','Honduras','Hong Kong','Hungary','Iceland','India','Indonesia','Iran','Iraq','Ireland','Israel','Italy','Jamaica','Japan','Jordan','Kazakhstan','Kenya','Dem. Rep. Korea','Korea','Kyrgyzstan','Lao PDR','Latvia','Lebanon','Lesotho','Libya','Lithuania','Luxembourg','Madagascar','Malawi','Malaysia','Mali','Mauritania','Mauritius','Mexico','Mongolia','Montenegro','Morocco','Mozambique','Namibia','Nepal','Netherlands','New Caledonia','New Zealand','Nicaragua','Niger','Nigeria','Norway','Oman','Pakistan','Panama','Papua New Guinea','Paraguay','Peru','Philippines','Poland','Portugal','Qatar','Moldova','Romania','Russia','Rwanda','St. Vin. and Gren.','Samoa','S<U+00E3>o Tom<U+00E9> and Principe','Saudi Arabia','Senegal','Serbia','Sierra Leone','Singapore','Slovakia','Slovenia','Solomon Is.','South Africa','Spain','Sri Lanka','Sudan','Suriname','Swaziland','Sweden','Switzerland','Syria','Tajikistan','Thailand','Macedonia','Togo','Trinidad and Tobago','Tunisia','Turkey','Turkmenistan','Uganda','Ukraine','United Kingdom','Tanzania','United States','United Arab Emirates','Uruguay','Uzbekistan','Vanuatu','Venezuela','Vietnam','Yemen','Zambia','Zimbabwe']
 
-   // add selections for mds
-   fillOptions("#mdsSelect #drugSelect", allDrugs, true);
-   fillOptions("#mdsSelect #regionSelect", allRegions, true);
-   $("#mdsSelect #drugSelect").on("change", updateMDS);
-   $("#mdsSelect #regionSelect").on("change", updateMDS);
-   updateMDS()
+      fillOptions("#tsSelect #drugSelect", allDrugs, false);
+      fillOptions("#tsSelect #regionSelect", allSubregions, false);
+      $("#tsSelect #drugSelect").on("change", updateShownTS)
+      $("#tsSelect #regionSelect").on("change", updateShownTS);
+      updateShownTS()
 
-   // add selections for mds
-   fillOptions("#locRegSelect #drugSelect", allDrugs, true);
-   fillOptions("#locRegSelect #regionSelect", allRegions, true);
-   $("#locRegSelect #drugSelect").on("change", updateLocReg);
-   $("#locRegSelect #regionSelect").on("change", updateLocReg);
-   updateLocReg()
-  </script>
+      // add selections for cognostics
+      allRegions = ["Asia", "Africa", "Americas", "Europe", "Oceania"]
+      const allCogs = incb_histo[0].map(function(d) { return d["L1"] })
+      fillOptions("#cogSelections #cogSelect", allCogs, false);
+      fillOptions("#cogSelections #drugSelect", allDrugs, true);
+      fillOptions("#cogSelections #regionSelect", allRegions, false);
+      $("#cogSelections #regionSelect").on("change", updateCognostics);
+      $("#cogSelections #cogSelect").on("change", updateCognostics);
+      $("#cogSelections #drugSelect").on("change", updateCognostics);
+      updateCognostics()
 
-  <script type="text/javascript">
-   // use multiselect plugin
-   $(function(){
-       $(".chzn-select").chosen();
-   });
-  </script>
+      // add selections for mds
+      fillOptions("#mdsSelect #drugSelect", allDrugs, true);
+      fillOptions("#mdsSelect #regionSelect", allRegions, true);
+      $("#mdsSelect #drugSelect").on("change", updateMDS);
+      $("#mdsSelect #regionSelect").on("change", updateMDS);
+      updateMDS()
 
-  <script type="text/javascript" src="../assets/js/bootstrap.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">
-    </body>
+      // add selections for mds
+      fillOptions("#locRegSelect #drugSelect", allDrugs, true);
+      fillOptions("#locRegSelect #regionSelect", allRegions, true);
+      $("#locRegSelect #drugSelect").on("change", updateLocReg);
+      $("#locRegSelect #regionSelect").on("change", updateLocReg);
+      updateLocReg()
+</script>
+
+<script type="text/javascript">
+  // use multiselect plugin
+  $(function(){
+  $(".chzn-select").chosen();
+  });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">
+</body>
 </html>
 

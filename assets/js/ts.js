@@ -182,9 +182,6 @@ function labelTS(elem, scales, curCountryTS, keyFun, hoverFuns, paddings, opts) 
 }
 
 function tsLegend(elem, colScale, paddings) {
-  console.log(elem)
-  console.log(colScale.domain())
-  console.log(colScale.range())
   var colLegend = d3.legend.color()
       .scale(colScale)
       .labelOffset(3)

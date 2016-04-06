@@ -24,10 +24,10 @@ get_incb_df <- function(type = "principal") {
   # get data
   type <- match.arg(type, c("principal", "analogues"))
   if(type == "principal") {
-    incb_link <- "https://www.dropbox.com/s/kfp5iw7m6wnet0y/Table%20XII.Consumption%20of%20principal%20narcotic%20drugs%20%281989-2013%29.xls?dl=1"
+    incb_link <- "https://www.dropbox.com/s/99ieh1huzkegckh/Table%20XII.Consumption%20of%20principal%20narcotic%20drugs%20%281989-2013%29.xls?dl=1"
     names_ix <- 2
   } else {
-    incb_link <- "https://www.dropbox.com/s/qbl1pmlvheqx6bs/Table%20XIII.1.Consumption%20of%20fentanyl%20analogues%20in%20grams%20%281989-2013%29.xls?dl=1"
+    incb_link <- "https://www.dropbox.com/s/b1g23yt03z89mov/Table%20XIII.1.Consumption%20of%20fentanyl%20analogues%20in%20grams%20%281989-2013%29.xls?dl=1"
     names_ix <- 3
   }
   incb_file <- tempfile()
@@ -51,7 +51,8 @@ get_incb_df <- function(type = "principal") {
   incb <- incb[min_ix:max_ix, ]
 
   # fix country names
-  data(matched_names)
+  matched_countries <- read.csv("https://www.dropbox.com/s/6ljf4yhvph9pzm4/matched_country_names.csv?dl=1")
+  matched_countries <- setNames(matched_countries$raw_country, matched_countries$country)
   incb$country <- tolower(incb$country)
   incb$country <- as.factor(matched_names[incb$country])
   incb <- incb[!is.na(incb$country), ]
@@ -123,9 +124,10 @@ incb <- merge(incb, indicators, by = "country", all.x = T)
 incb <- arrange(incb, country, year)
 
 ## ---- normalize ----
-d3_countries <- read.csv("https://www.dropbox.com/s/j62qyi5zoxonssu/d3_match_countries.csv?dl=1")
-colnames(d3_countries) <- c("country", "json_country")
-incb <- merge(incb, d3_countries, by = "country")
+matched_countries <- read.csv("https://www.dropbox.com/s/6ljf4yhvph9pzm4/matched_country_names.csv?dl=1")
+
+incb <- merge(incb, matched_countries[, c("country", "json_country")],
+              by = "country")
 incb <- incb %>%
   filter(pop2005 > 1e5)
 

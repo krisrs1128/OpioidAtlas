@@ -23,7 +23,7 @@ library("stringdist")
 get_incb_df <- function(type = "principal") {
   # get data
   type <- match.arg(type, c("principal", "analogues"))
-  if(type == "principal") {
+  if (type == "principal") {
     incb_link <- "https://www.dropbox.com/s/99ieh1huzkegckh/Table%20XII.Consumption%20of%20principal%20narcotic%20drugs%20%281989-2013%29.xls?dl=1"
     names_ix <- 2
   } else {
@@ -52,29 +52,25 @@ get_incb_df <- function(type = "principal") {
 
   # fix country names
   matched_countries <- read.csv("https://www.dropbox.com/s/6ljf4yhvph9pzm4/matched_country_names.csv?dl=1")
-  matched_countries <- setNames(matched_countries$raw_country, matched_countries$country)
-  incb$country <- tolower(incb$country)
-  incb$country <- as.factor(matched_names[incb$country])
+  match_ix <- match(tolower(incb$country), matched_countries$raw_country)
+  country_label <- c("country", "json_country")
+  incb[, country_label] <- matched_countries[match_ix, country_label]
   incb <- incb[!is.na(incb$country), ]
 
   # fix data types
   incb$year <- as.POSIXct(sprintf("%s-01-01", incb$year), format = "%Y-%m-%d")
-  drug_ix <- setdiff(colnames(incb), c("country", "year"))
+  drug_ix <- setdiff(colnames(incb), c("country", "json_country", "year"))
   string_to_num <- function(x) {
     x <- gsub(" ", "", x)
     as.numeric(x)
   }
 
   incb[, drug_ix] <- colwise(string_to_num)(incb[, drug_ix])
-  if(type == "analogues") {
+  if (type == "analogues") {
     incb[, drug_ix] <- 0.001 * incb[, drug_ix] # put everything into kilograms
   }
 
-  # correct the country names
-  data(matched_names)
-  incb$country[matched_names]
-
-  return (incb)
+  incb
 }
 
 ## ---- apply-process ----
@@ -85,11 +81,11 @@ analogues <- get_incb_df(type = "analogues")
 sort(table(principal$country), decreasing = T)[1:10]
 filter(principal, country == "czech_republic")
 principal <- principal %>%
-  group_by(country, year) %>%
+  group_by(country, json_country, year) %>%
   summarise_each(funs(sum))
 sort(table(analogues$country), decreasing = T)[1:10]
 analogues <- analogues %>%
-  group_by(country, year) %>%
+  group_by(country, json_country, year) %>%
   summarise_each(funs(sum))
 
 ## ---- get-geo-data ----
@@ -117,22 +113,20 @@ geo$subregion <- subregion_map[as.character(geo$subregion)]
 geo$region <- region_map[as.character(geo$region)]
 
 ## ---- merge ----
-incb <- merge(principal, analogues, by = c("country", "year"), all.x = T)
+incb <- merge(principal, analogues, by = c("country", "json_country", "year"),
+              all.x = T)
 incb <- merge(incb, geo, by = "country", all.x = T)
-data(indicators)
-incb <- merge(incb, indicators, by = "country", all.x = T)
 incb <- arrange(incb, country, year)
 
-## ---- normalize ----
-matched_countries <- read.csv("https://www.dropbox.com/s/6ljf4yhvph9pzm4/matched_country_names.csv?dl=1")
-
-incb <- merge(incb, matched_countries[, c("country", "json_country")],
-              by = "country")
+## ---- filter ----
 incb <- incb %>%
   filter(pop2005 > 1e5)
 
-keep_drugs <- c("morphine", "fentanyl", "oxycodone", "pethidine", "hydrocodone", "codeine")
-keep_ix <- apply(incb[, keep_drugs], 1, function(x) all(!is.na(x))) # only those which are non-na for all years
+keep_drugs <- c("morphine", "fentanyl", "oxycodone", "pethidine", "hydrocodone",
+                "codeine")
+
+# only those which are non-na for all years
+keep_ix <- apply(incb[, keep_drugs], 1, function(x) all(!is.na(x))) 
 incb <- incb[keep_ix, ]
 
 ## ---- equivalents ----
@@ -161,7 +155,7 @@ incb2 <- dlply(incb2, .(country), function(x) {
                  gdp = x$gdp[1],
                  gdp_num = x$gdp_num[1])
   ts <- list(years = x$year)
-  for(drug in keep_drugs) {
+  for (drug in keep_drugs) {
     if(all(!is.na(x[drug]))) {
       ts[drug] <- x[drug]
     }

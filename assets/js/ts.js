@@ -108,7 +108,7 @@ function drawTSCountry(elem, incb, country, drug, duration, paddings) {
  */
 function drawTSRegions(elem, incb, regions, drugs, duration) {
   f1 = function(d) {
-    return (-1 != $.inArray(d["supp"]["json_country"], regions)) & (-1 != $.inArray(d["col_id"], drugs))
+    return (-1 != $.inArray(d["supp"]["json_country"], regions)) & (-1 != $.inArray(d["col_id"], drugs));
   };
   f2 = function(d) {
     return (-1 != $.inArray(d[0]["supp"]["json_country"], regions)) & (-1 != $.inArray(d[0]["col_id"], drugs))
@@ -132,6 +132,8 @@ function drawTSRegions(elem, incb, regions, drugs, duration) {
 		     "out": trendOutFun("ts", opts)};
   const labelHoverFuns = {"over": trendLabelOverFun(opts),
 			  "out": trendLabelOutFun(opts)};
+
+  curCountryArray = curCountryArray.filter(function(d) { return Object.keys(d).length > 1})  // not sure why additional point is appearing at end of the array
   drawTS(elem, scales, curCountryArray, curCountryTS, keyFuns, hoverFuns,
 	 labelPaddings, opts, [5, 9]);
   labelTS(elem, scales, curCountryTS, keyFuns["points"], labelHoverFuns,

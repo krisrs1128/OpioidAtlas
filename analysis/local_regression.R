@@ -29,26 +29,26 @@ keep_drugs <- c("morphine", "fentanyl", "oxycodone", "pethidine", "hydrocodone",
 
 ## ---- funs ----
 k_fun <- function(x0, x, h) {
-    diag(exp(-(1 / h) * (x - x0)^ 2))
+  diag(exp(-(1 / h) * (x - x0)^ 2))
 }
 
 weighted_regr_coef <- function(x, W, y, lambda) {
-    B <- cbind(1, x)
-    Lambda <- diag(c(0, lambda))
-    solve(t(B) %*% W %*% B + Lambda) %*% t(B) %*% W %*% y
+  B <- cbind(1, x)
+  Lambda <- diag(c(0, lambda))
+  solve(t(B) %*% W %*% B + Lambda) %*% t(B) %*% W %*% y
 }
 
 local_regr_fits <- function(x, y, targets, h, lambda) {
-    y_hat <- vector(length = length(targets))
-    beta <- vector(length = length(targets), mode = "list")
-    for(i in seq_along(targets)) {
-        bi <- c(1, targets[i])
-        Wi <- k_fun(x, targets[i], h)
-        beta[[i]] <- weighted_regr_coef(x, Wi, y, lambda)
-        rownames(beta[[i]]) <- c("intercept", "slope")
-        y_hat[i] <- t(bi) %*% beta[[i]]
-    }
-    list(y_hat = y_hat, betas = beta)
+  y_hat <- vector(length = length(targets))
+  beta <- vector(length = length(targets), mode = "list")
+  for(i in seq_along(targets)) {
+    bi <- c(1, targets[i])
+    Wi <- k_fun(x, targets[i], h)
+    beta[[i]] <- weighted_regr_coef(x, Wi, y, lambda)
+    rownames(beta[[i]]) <- c("intercept", "slope")
+    y_hat[i] <- t(bi) %*% beta[[i]]
+  }
+  list(y_hat = y_hat, betas = beta)
 }
 
 ## ---- reshape ----
@@ -62,34 +62,34 @@ mincb <- incb[, keep_cols] %>%
 
 ## ---- run-regs ----
 series_fit <- function(ts, h = 1, lambda = 0.01) {
-    x <- year(ts$year) - 1989
-    y <- ts$value ^ (1 / 3)
-    targets <- seq_len(nrow(ts))
-    fit  <- local_regr_fits(x, y, targets, h, lambda)
-    mbeta <- melt(fit$beta) %>%
-        dcast(L1 + Var2 ~ Var1, value.var = "value")
-    mbeta[, "target"] <- targets[mbeta[, "L1"]]
+  x <- year(ts$year) - 1989
+  y <- ts$value ^ (1 / 3)
+  targets <- seq_len(nrow(ts))
+  fit  <- local_regr_fits(x, y, targets, h, lambda)
+  mbeta <- melt(fit$beta) %>%
+    dcast(L1 + Var2 ~ Var1, value.var = "value")
+  mbeta[, "target"] <- targets[mbeta[, "L1"]]
 
-    mbeta[, "y_hat"] <- fit$y_hat
-    mbeta[, "y"] <- y
-    mbeta
+  mbeta[, "y_hat"] <- fit$y_hat
+  mbeta[, "y"] <- y
+  mbeta
 }
 
 fits <- mincb %>%
-    group_by(drug, country) %>%
-    do(series_fit(.))
+  group_by(drug, country) %>%
+  do(series_fit(.))
 
 fits$year <- fits$target + 1989 - 1
 fits$y_hat[fits$y_hat < 1e-10] <- 1e-10
 fits  <- data.table(fits) %>%
-    arrange(country, drug, year)
+  arrange(country, drug, year)
 
 ## ---- output-results ----
 write.csv(fits, file = file.path(root_dir, "incb_local_reg.csv"), row.names = F)
 
 fits2 <- fits %>%
-    select(country, year, drug, slope, y_hat) %>%
-    left_join(data.table(unique(incb[, c("country", "json_country", "iso3", "region")])), by = "country")
+  select(country, year, drug, slope, y_hat) %>%
+  left_join(data.table(unique(incb[, c("country", "json_country", "iso3", "region")])), by = "country")
 fits2$slope <- round(fits2$slope, 2)
 fits2$y_hat <- round(fits2$y_hat, 2)
 

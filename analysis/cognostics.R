@@ -95,17 +95,18 @@ incb_cogs <- incb_cogs %>%
 write.csv(incb_cogs, file = file.path(root_dir, "incb_cogs.csv"), row.names = F)
 
 ## ---- histo-bins ----
-keep_drugs <- c("morphine", "fentanyl", "oxycodone", "pethidine", "hydrocodone", "codeine", "total")
+keep_drugs <- c("morphine", "fentanyl", "oxycodone", "pethidine", "hydrocodone",
+                "codeine", "total")
 
 assign_quantile <- function(x, n_bins = 50) {
     finite_ix <- is.finite(x)
-    bins  <- rep(NA, length(x))
     cut(x[finite_ix], n_bins)
 }
 
+histo_id <- c("country", "json_country", "variable", "region", "subregion")
 incb_histo <- incb_cogs %>%
   filter(variable %in% keep_drugs) %>%
-  melt(id.vars = c("country", "json_country", "variable", "region", "subregion"), variable.name = "cog") %>%
+  melt(id.vars = histo_id, variable.name = "cog") %>%
   dlply(.(cog), function(x) {
     data.frame(country = x$country, json_country = x$json_country,
                drug = x$variable, region = x$region,

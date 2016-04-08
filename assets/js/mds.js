@@ -76,15 +76,18 @@ function updateLocReg() {
   const scales = getScatterScales(locRegData, locRegElem, [20, 60, 60, 20])
   updateAxes(locRegElem, scales, [50, 50], opts["duration"], 10, true)
 
-  // add labels
-  locRegElem.selectAll(".axis.xaxis")
-    .append("text")
-    .attr({"text-anchor": "middle",
-	   "transform": "translate(" + elem.attr("width") / 4 + ", 38)"})
-    .text("Local Average (mg / person)")
-  locRegElem.selectAll(".axis.yaxis")
-    .append("text")
-    .attr({"text-anchor": "middle",
-	   "transform": "translate(-38, " + (elem.attr("height") / 2 - 40)+ ")rotate(90)"})
-    .text("Local Slope (mg / person)")
+  // add labels, if not present
+  if(locRegElem.select("#xAxisLabel").node() == null) {
+    locRegElem.selectAll(".axis.xaxis")
+      .append("text")
+      .attr({"id": "xAxisLabel",
+	     "text-anchor": "middle",
+	     "transform": "translate(" + elem.attr("width") / 4 + ", 38)"})
+      .text("Local Average (mg / person)")
+    locRegElem.selectAll(".axis.yaxis")
+      .append("text")
+      .attr({"text-anchor": "middle",
+	     "transform": "translate(-38, " + (elem.attr("height") / 2 - 40)+ ")rotate(90)"})
+      .text("Local Slope (mg / person)")
+  }
 }

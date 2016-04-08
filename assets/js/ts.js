@@ -84,11 +84,14 @@ function drawTSCountry(elem, incb, country, drug, duration, paddings) {
     .style({"font-size": "10px"})
 
   // add axis labels
-  elem.select(".axis.yaxis")
-    .append("text")
-    .attr({"text-anchor": "middle",
-	   "transform": "translate(-55, " + elem.attr("height") / 2 + ")rotate(90)"})
-    .text("mg per person")
+  const axisElem = elem.select(".axis.yaxis")
+  if(elem.select("#yAxisLabel").node() == null) {
+    axisElem.append("text")
+      .attr({"text-anchor": "middle",
+	     "id": "yAxisLabel",
+	     "transform": "translate(-55, " + elem.attr("height") / 2 + ")rotate(90)"})
+      .text("mg per person")
+  }  
 }
 
 /**

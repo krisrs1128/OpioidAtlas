@@ -308,8 +308,7 @@
   setupSVG("#cognosticsSeries", cognostics.width(), 0.6 * cognostics.width(), "#F7F7F7");
 
   // add selections for map
-  allDrugs = Object.keys(incb[0].ts);
-  allDrugs.shift();
+  allDrugs = ["total", "codeine", "fentanyl", "hydrocodone", "morphine", "oxycodone",  "pethidine"];
   fillOptions("#mapSelect #drugSelect", allDrugs, false);
   $("#mapSelect #drugSelect").on("change", updateMapColors);
 

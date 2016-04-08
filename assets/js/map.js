@@ -100,7 +100,7 @@ function mapHoverFun(d) {
 
   // smaller font
   elem.selectAll("#tsLegend text")
-    .style("font-size", "8px")
+    .style("font-size", "9.5px")
   d3.select("#tsTitle")
     .text(d.properties.name)
 }

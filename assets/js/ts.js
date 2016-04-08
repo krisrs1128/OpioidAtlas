@@ -72,13 +72,13 @@ function drawTSCountry(elem, incb, country, drug, duration, paddings) {
   const hoverFuns = {"over": function() {}, "out": function() {}}
   const opts = {"r": .75, "y_enter": 0, "x_enter": undefined, "stroke-width": .2,
 		"opacity": 1, "duration": duration}
-  paddings = [45, 80, 20, 20]
+  paddings = [70, 95, 30, 15]
   var scales = getTSScales(curCountryArray.filter(f3), elem, paddings)
   scales["col"] = drugsScale();
 
   drawTS(elem, scales, curCountryArray, curCountryTS, keyFuns, hoverFuns,
-	 [paddings[2], paddings[0]], opts, [4, 3])
-  tsLegend(elem, drugsScale(), [elem.attr("width") - 75, elem.attr("height") / 4]);
+	 [paddings[2], paddings[0]], opts, [4, 5])
+  tsLegend(elem, drugsScale(), [elem.attr("width") - 87, elem.attr("height") / 4]);
   elem.select("#tsLegend")
     .selectAll("text")
     .style({"font-size": "10px"})
@@ -87,7 +87,7 @@ function drawTSCountry(elem, incb, country, drug, duration, paddings) {
   elem.select(".axis.yaxis")
     .append("text")
     .attr({"text-anchor": "middle",
-	   "transform": "translate(-35, " + elem.attr("height") / 2 + ")rotate(90)"})
+	   "transform": "translate(-55, " + elem.attr("height") / 2 + ")rotate(90)"})
     .text("mg per person")
 }
 
@@ -187,8 +187,8 @@ function tsLegend(elem, colScale, paddings) {
   var colLegend = d3.legend.color()
       .scale(colScale)
       .labelOffset(3)
-      .shapeHeight(8)
-      .shapeWidth(5);
+      .shapeHeight(10)
+      .shapeWidth(8);
   elem.append("g")
     .attr({"id": "tsLegend",
 	   "transform": "translate(" + paddings[0] + "," + paddings[1] + ")"});

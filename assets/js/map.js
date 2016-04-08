@@ -97,6 +97,10 @@ function mapHoverFun(d) {
   var curDrug = $("#mapSelect #drugSelect").val()
   var elem = d3.select("#countryTS")
   drawTSCountry(elem, incb, countryMatch.country, curDrug, 1000)
+
+  // smaller font
+  elem.selectAll("#tsLegend text")
+    .style("font-size", "8px")
   d3.select("#tsTitle")
     .text(d.properties.name)
 }
@@ -142,9 +146,8 @@ function updateMap(mapElem, mapDict, curDrug, curYearIx, mgToCols) {
     .shapePadding(0)
     .ascending(true)
   mapElem.select("#mgLegend")
+    .style("font-size", "9px")
     .call(mgLegend)
-  mapElem.select("#mgLegend").selectAll(".cell .label")
-    .style({"font-size": "8px"})
 }
 
 /**
@@ -168,7 +171,7 @@ function setupMapVis(incb, countries, width, height) {
   tsElem = SVG
   tsElem.append("g")
     .attr({"id": "countryTS",
-	   "width": .3 * width,
+	   "width": .33 * width,
 	   "height": .4 * height,
 	   "transform": "translate(0, " + .6 * height + ")"})
 

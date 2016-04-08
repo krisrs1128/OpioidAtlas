@@ -2,7 +2,7 @@
 <html lang="en"><head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Opioid Data Browser</title>
+    <title>Opioid Atlas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="yeti_files/bootstrap.css" media="screen">
@@ -65,7 +65,7 @@
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="index.html" class="navbar-brand">Opioid Data Browser</a>
+          <a href="index.html" class="navbar-brand">Opioid Atlas</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -95,7 +95,7 @@
         <div class="row">
           <div class="col-lg-12">
             <h1>Methods</h1>
-            <p class="text-muted">All of our preprocessing and analysis can be reproduced by running our scripts which can be found in our Github repository located <a href="https://github.com/krisrs1128/OpioidDataBrowser">here</a>. The code for generating the visualizations and site html is available <a href="https://github.com/krisrs1128/OpioidDataBrowser/tree/gh-pages">here</a>.</p>
+            <p class="text-muted">All of our preprocessing and analysis can be reproduced by running our scripts which can be found in our Github repository located <a href="https://github.com/krisrs1128/OpioidAtlas">here</a>. The code for generating the visualizations and site html is available <a href="https://github.com/krisrs1128/OpioidAtlas/tree/gh-pages">here</a>.</p>
 						<p class="text-muted">In order to focus our data visualization tool on the most commonly used opiates in palliative care, at the outset, we removed several medications that seemed less relevant to palliative care; see our <a href="data.html">Data Sources page</a> to recover these fields. We then transformed each non-morphine medication to morphine equivalence, using the morphine milligram equivalent <a href="http://www.nyc.gov/html/doh/html/mental/MME.html">calculator</a> available from NYC Department of Health and Mental Hygiene.</p>
 						<p class="text-muted">For each of the three figures in the statistical summaries section, we first cube-rooted the data, so that large countries did not dominate the rest. For the histogram, we added pseudocounts for the statistics involving relative change, to avoid dividing by zero. Specifically, we added 1e-3 mg per person to the numerator and denominator of the ratios.</p>
 						<p class="text-muted">For the local trends, we fitted a local ridge regression for each country-drug pair. This provides a collection of slopes t for each timepoint in that series; we called this value the “local slope.” Similarly, the model provides a fitted response yt at each timepoint; we called this the “local average.”</p>
@@ -112,7 +112,7 @@
 	<div class="row">
 	  <div class="col-lg-12">
 	    <p>Made by <a href="http://stanford.edu/group/stats-for-good/" rel="nofollow">Stanford Stats for Good</a> in collaboration with <a href="http://globalonc.org/">Global Oncology Initiative (GO!)</a>.</p>
-	    <p>Code can be downloaded from our <a href="https://github.com/krisrs1128/OpioidDataBrowser">GitHub repository</a> and is released under the <a href="https://github.com">MIT License</a>.</p>
+	    <p>Code can be downloaded from our <a href="https://github.com/krisrs1128/OpioidAtlas">GitHub repository</a> and is released under the <a href="https://github.com">MIT License</a>.</p>
 
 	    
 	  </div>

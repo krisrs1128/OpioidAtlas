@@ -75,9 +75,9 @@
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
             <li><a href="index.html">Home</a></li>
-            <li><a href="#opioidmap">Opioid Map</a></li>
-            <li><a href="#region">Regional Trends</a></li>
-            <li><a href="#cogs">Summary Statistics</a></li>
+            <li><a href="charts.html#opioidmap">Opioid Map</a></li>
+            <li><a href="charts.html#region">Regional Trends</a></li>
+            <li><a href="charts.html#cogs">Summary Statistics</a></li>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
@@ -90,182 +90,28 @@
       </div>
     </div>
 
-    <div id="opioidmap" class="container">
+    <div class="container">
       <div class="page-header" id="banner">
         <div class="row">
           <div class="col-lg-12">
-            <h1>Opioid Map</h1>
-            <h2>Explore country-level consumption trends by opioid class and year</h2>
-            <p class="text-muted">  Explore country-level consumption trends by hovering over different geographic location in the Opioid Map. Use the dropdown menu to select specific opioids and the year slider to visualize global consumption patterns for a given year. All opioid consumption levels are reported in morphine-equivalent milligrams per person and the calculation is described on our <a href="methods.html">Methods page</a>.</p>
-	         <br>
+            <h1>Data Sources</h1>
+            <h2>Raw Data</h2>
+            <ul>
+						<li><a href="https://www.incb.org/incb/en/narcotic-drugs/Technical_Reports/2014/narcotic-drugs-technical-report-2014.html">Original INCB publication</a></li>
+						<li><a href="https://www.dropbox.com/s/99ieh1huzkegckh/Table%20XII.Consumption%20of%20principal%20narcotic%20drugs%20%281989-2013%29.xls?dl=0">Table 12</a> in csv format</li>
+						<li><a href="https://www.dropbox.com/s/b1g23yt03z89mov/Table%20XIII.1.Consumption%20of%20fentanyl%20analogues%20in%20grams%20%281989-2013%29.xls?dl=0">Table 13.1</a> in csv format</li>
+						</ul>
+						<h2>Processed Data</h2>
+            <ul>
+						<li><a href="https://www.dropbox.com/s/qxet5l7vdtxo1w3/incb.csv?dl=0">Combined incb tables</a></li>
+						<li><a href="https://www.dropbox.com/s/b9g31fp3e97874u/incb_cogs.csv?dl=0">Descriptive statistics histogram</a></li>
+						<li><a href="https://www.dropbox.com/s/0pfdgw5s9zlvfd7/incb_mds.csv?dl=0">Multidimensional scaling</a></li>						
+						<li><a href="https://www.dropbox.com/s/0nb6xz6rsr8rl94/incb_local_reg.csv?dl=0">Local regression</a></li>							
+					</ul>
+
           </div>
         </div>
-        <div class="row">
-	    <!-- Chart 1========================== -->
-	    <div class="col-lg-2">
-	      <form id="mapSelect" class="well" style="width:150px">
-      		<label id="mapDrugInput">Opioid<br><select class="chzn-select" id="drugSelect" style="width:110px"></select></label>
-      		<label id="mapYearInput"><text>Year: 1989</text><input type="range" min="1989" max="2013" value="1989" id="mapSlider", oninput="updateMapColors()" style="width:120px"></label>
-      	      </form>
-  	    </div>
-    	    <div id="map" class="col-lg-10">
-    	    </div>
-	</div>
-  	<br>
-  	    <div id ="region" class="container">
-  	      <hr>
-  	      <br>
-	      <h1>Regional Trends</h1>
-  	      <h2>Visualize longitudional trends in opioid cosumption by country or region.</h2>
-  	      <p class="text-muted"> Use the options on the left of the chart to visualize trends by country and opiate type. Move your mouse over a trend line or country name to highlight the series and print the full country name. All country names are abbreviated using standard <a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3#Current_codes">three letter country  codes</a>.  The y-axis is cube-root scaled, so that differences at small scales are not dominated by those at larger ones.</p>
 
-	      <div class="row">
-		<div class="col-lg-2">
-		  <form id="tsSelect" class="well">
-		    <label> Opioid
-		      <br>
-    		      <select class="chzn-select" multiple="true" id="drugSelect"></select>
-		    </label>
-		    <label>
-		      Region
-		      <br>
-    		      <select class="chzn-select" multiple="true" id="regionSelect"></select>
-		    </label>
-		  </form>
-		</div>
-  		<div class="col-lg-10" id="tsRegions">
-		</div>
-  	      </div>
-	    </div>
-	    <br>
-	    
-	    <div id = "cogs" class="container">
-  	      <hr>
-  	      <br>
-    	      <div class="row">
-      		<div class="col-lg-12">
-        	  <div class="bs-component">	
-		    <h1>Statistical Summaries</h1>
-  		    <p class="text-muted"> While helpful for reviewing the raw data, the map and time series plots above aren’t well-suited to answering a few simple questions we had about the data: What are overall trends in consumption across drugs and countries? Are there substantial deviations? Are there groups of countries with very similar consumption patterns? The map makes comparisons across time and drugs difficult, while the looking at too many time series at once can obscure interesting variation. To more systematically explore these questions, we calculated different summary statistics and plotted them in the three figures below. See Methods [todo: link] for details on how these summaries were computed. </p>
-
-  		    <h2>Descriptive Statistics Histogram</h2>
-  		    <p class="text-muted"> To visualize key consumption trends, provide continent and opiate class information in the selection box below. Then, use the dropdown to choose from alternative statistic to display in the chart on the right. </p>
-          <p class="text-muted">  Each country in the continent you selected appears as a dot in the chart below. You can hover a country dot in the chart on the left to view detailed trends for the country in the chart on the right.  Country dots that appear on the same horizontal line have a similar trend.  The number of country dots on line indicates the number of countries that share the trend and the y-axis label shows the value of the summary statistic on a subset of bins. For example, when the “overall change” trend option is selected, the country dots near the top represent series that are increasing, those at the bottom are decreasing.  </p>
-		  </div>
-		</div>
-	      </div>
-	      
-	      <div class="row">
-  		<div class="col-lg-2" id="cogSelections">
-		  <form class="well">
-		    <label> Cognostic <br>
-    		      <select class="chzn-select" id="cogSelect"></select>
-		    </label>
-		    <label> Opioid <br>
-    		      <select class="chzn-select" multiple="true" id="drugSelect"></select>
-		    </label>
-		    <label> Region <br>
-    		      <select class="chzn-select" multiple="true" id="regionSelect"></select>
-		    </label>
-		  </form>
-		</div>
-      		<div class="col-lg-5">
-        	  <div class="bs-component">
-		    <div class="row-fluid">
-      		      <div id="cognostics"></div>
-      		      <p class="text-muted">This data view helps identify the typical value of the summary statistic across all country-drug pairs, as well as outlier series that deviate strongly. </p>
-   		      
-  		    </div>         		 
-		  </div>
-       		</div>
-		<div class="col-lg-5">
-       		  <div class="bs-component">
-		    <div class="row-fluid">
-      		      <div id="cognosticsSeries"></div>
-  		    </div> 
-  		    <p class="text-muted">The country-drug combination you selected on the right chart will appear in the foreground. All other drugs for that country appear muted in the background.</p>
-		  </div>
-		</div>
-	      </div>
-	    </div>
-  	    <br>
-
-    	    <div class="row">
-      	      <div class="col-lg-12">
-		<div class="bs-component">	
-		  <h2>Temporal Opioid Consumption Patterns</h2>
-  		  <p class="text-muted"> Use this chart to identify countries that have rapid versus slow annual changes in consumption over time.  Each point on the left chart represents a country-drug combination at a specific time point, specified by the selection box. Points to the right represent country-drug series that have high values in a small window around the selected time. Points towards the top (bottom) represent country-drug series that are increasing (decreasing) rapidly in a window around the selected time.</p>
-		</div>
-	      </div>
-	    </div>	
-
-	    <div class="row">
-  	      <div class="col-lg-2" id="locRegSelect">
-		<form class="well">
-		  <label> Opioid <br>
-    		    <select class="chzn-select" multiple="true" id="drugSelect"></select>
-		  </label>
-		  <label> Region <br>
-    		    <select class="chzn-select" multiple="true" id="regionSelect"></select>
-		  </label>
-      		  <label id="locRegYearInput">
-		    <text>Year: 1989</text>
-		    <input type="range" min="1989" max="2013" value="1989" id="locRegSlider", oninput="updateLocReg()">
-      		  </label>
-		</form>
-  	      </div>
-      	      <div class="col-lg-5">
-		<div class="bs-component">
-   		  <div class="row-fluid">
-      		    <div id="locRegScatter"></div>
-          	    <p class="text-muted">Hover over a country to show its full time series in the chart on the right. </p>
-  		  </div>         		 
-		</div>
-       	      </div>
-	      <div class="col-lg-5">
-       		<div class="bs-component">
-		  <div class="row-fluid">
-      		    <div id="locRegSeries"></div>
-		    <p class="text-muted">The country you choose on the left appears here. All other drugs for that country appear muted in the background.</p>
-  		  </div> 
-		</div>
-	      </div>
-	    </div>		
-
-	    </div>
-    	 <div class="row">
-       	 <div class="col-lg-12">
-              <div class="bs-component">	
-		<h2>Opioid Consumption Clusters</h2>
-  		<p class="text-muted"> Based on their opiate consumption data, the chart below uses a statistical method, called multidimensional scaling (MDS), to visualize the level of similarity between countries in the same continent, or among multiple continents. Countries that have similar consumption appear closer together on the chart below. To visualize opiate consumption "clusters" in the chart on the left, indicate continent and opioid classes information in the selection box below. </p>
-	            </div>
-	       </div>
-	  </div>			
-
-	<div class="row">
-  	  <div class="col-lg-2" id="mdsSelect">
-	    <form class="well">
-	      <label> Opioid <br>
-    		<select class="chzn-select" multiple="true" id="drugSelect"></select>
-	      </label>
-	      <label> Region <br>
-    		<select class="chzn-select" multiple="true" id="regionSelect"></select>
-	      </label>
-	    </form>
-  	  </div>
-      	  <div class="col-lg-5">
-            <div class="bs-component">
-      	      <div id="mdsScatter"></div>
-              <p class="text-muted">Hover over a country to display more detailed country and continent-level trends in chart on the right side. </p>
-       	  	</div>
-       	  </div>
-	  			<div class="col-lg-5">
-       	    <div class="bs-component">
-      	      <div id="mdsSeries"></div>
-              <p class="text-muted">The country you selected on the right chart will appear in the foreground. All other drugs for that country appear muted in the background.</p>
-	    			</div>
-	    		</div>
-  </div>
 
 
       <br>

@@ -326,7 +326,13 @@
 
       // add selections for cognostics
       allRegions = ["Asia", "Africa", "Americas", "Europe", "Oceania"]
-      const allCogs = incb_histo[0].map(function(d) { return d["L1"] })
+      const allCogs = ["overall change", "log(overall relative change)",
+      "average 1989 - 1993", "average 1994 - 1998", "average 1999 - 2003",
+      "average 2004 - 2009", "average 2009 - 2013",
+      "maximum one-year increase", "maximum one-year decrease",
+      "log(maximum one-year relative increase)",
+      "log(maximum one-year relative decrease)"]
+
       fillOptions("#cogSelections #cogSelect", allCogs, false);
       fillOptions("#cogSelections #drugSelect", allDrugs, true);
       fillOptions("#cogSelections #regionSelect", allRegions, false);

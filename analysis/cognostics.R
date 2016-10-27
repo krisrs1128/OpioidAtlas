@@ -127,11 +127,11 @@ names(incb_histo) <- c("maximum one-year increase",
                        "log(maximum one-year relative decrease)",
                        "log(overall relative change)",
                        "overall change",
-                       "average 2009 - 2013",
-                       "average 1989 - 1993",
-                       "average 2004 - 2009",
-                       "average 1994 - 1998",
-                       "average 1999 - 2003")
+                       "average 2010 - 2014",
+                       "average 1990 - 1994",
+                       "average 2004 - 2010",
+                       "average 1994 - 1999",
+                       "average 1999 - 2004")
 
 incb_histo <- incb_histo[c(6, 5, 7:11, 1:4)]
 

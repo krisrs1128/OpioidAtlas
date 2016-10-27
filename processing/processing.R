@@ -7,7 +7,7 @@
 ## ---- setup ----
 # only part of this script that needs to be updated depending on user's
 # directories
-root_dir <- "~/Documents/programming/OpioidAtlas/assets/js"
+root_dir <- getwd()
 
 ## ---- libraries ----
 library("devtools")
@@ -149,7 +149,7 @@ keep_drugs <- c(keep_drugs, "total")
 incb <- incb %>%
   arrange(country, year)
 incb2 <- as.data.frame(incb)
-#write.csv(incb2, file.path(root_dir, "incb.csv"), row.names = F)
+write.csv(incb2, file.path(root_dir, "incb.csv"), row.names = F)
 
 ## ---- json-output ----
 incb2 <- dlply(incb2, .(country), function(x) {

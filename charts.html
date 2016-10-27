@@ -99,7 +99,7 @@
 	    <div class="col-lg-2">
 	      <form id="mapSelect" class="well" style="width:150px">
       		<label id="mapDrugInput">Opioid<br><select class="chzn-select" id="drugSelect" style="width:110px"></select></label>
-      		<label id="mapYearInput"><text>Year: 1989</text><input type="range" min="1989" max="2013" value="1989" id="mapSlider", oninput="updateMapColors()" style="width:120px"></label>
+      		<label id="mapYearInput"><text>Year: 1990</text><input type="range" min="1989" max="2014" value="1990" id="mapSlider", oninput="updateMapColors()" style="width:120px"></label>
       	      </form>
   	    </div>
     	    <div id="map" class="col-lg-10">
@@ -132,13 +132,13 @@
   	      </div>
 	    </div>
 	    <br>
-	    
+
 	    <div id = "cogs" class="container">
   	      <hr>
   	      <br>
     	      <div class="row">
       		<div class="col-lg-12">
-        	  <div class="bs-component">	
+        	  <div class="bs-component">
 		    <h1>Statistical Summaries</h1>
   		    <p class="text-muted"> While helpful for reviewing the raw data, the map and time series plots above aren’t well-suited to answering a few simple questions we had about the data: What are overall trends in consumption across drugs and countries? Are there substantial deviations? Are there groups of countries with very similar consumption patterns? The map makes comparisons across time and drugs difficult, while the looking at too many time series at once can obscure interesting variation. To more systematically explore these questions, we calculated different summary statistics and plotted them in the three figures below. See Methods [todo: link] for details on how these summaries were computed. </p>
 
@@ -148,7 +148,7 @@
 		  </div>
 		</div>
 	      </div>
-	      
+
 	      <div class="row">
   		<div class="col-lg-2" id="cogSelections">
 		  <form class="well">
@@ -168,15 +168,15 @@
 		    <div class="row-fluid">
       		      <div id="cognostics"></div>
       		      <p class="text-muted">This data view helps identify the typical value of the summary statistic across all country-drug pairs, as well as outlier series that deviate strongly. </p>
-   		      
-  		    </div>         		 
+
+  		    </div>
 		  </div>
        		</div>
 		<div class="col-lg-5">
        		  <div class="bs-component">
 		    <div class="row-fluid">
       		      <div id="cognosticsSeries"></div>
-  		    </div> 
+  		    </div>
   		    <p class="text-muted">The country-drug combination you selected on the right chart will appear in the foreground. All other drugs for that country appear muted in the background.</p>
 		  </div>
 		</div>
@@ -186,12 +186,12 @@
 
     	    <div class="row">
       	      <div class="col-lg-12">
-		<div class="bs-component">	
+		<div class="bs-component">
 		  <h2>Temporal Opioid Consumption Patterns</h2>
   		  <p class="text-muted"> Use this chart to identify countries that have rapid versus slow annual changes in consumption over time.  Each point on the left chart represents a country-drug combination at a specific time point, specified by the selection box. Points to the right represent country-drug series that have high values in a small window around the selected time. Points towards the top (bottom) represent country-drug series that are increasing (decreasing) rapidly in a window around the selected time.</p>
 		</div>
 	      </div>
-	    </div>	
+	    </div>
 
 	    <div class="row">
   	      <div class="col-lg-2" id="locRegSelect">
@@ -213,7 +213,7 @@
    		  <div class="row-fluid">
       		    <div id="locRegScatter"></div>
           	    <p class="text-muted">Hover over a country to show its full time series in the chart on the right. </p>
-  		  </div>         		 
+  		  </div>
 		</div>
        	      </div>
 	      <div class="col-lg-5">
@@ -221,20 +221,20 @@
 		  <div class="row-fluid">
       		    <div id="locRegSeries"></div>
 		    <p class="text-muted">The country you choose on the left appears here. All other drugs for that country appear muted in the background.</p>
-  		  </div> 
+  		  </div>
 		</div>
 	      </div>
-	    </div>		
+	    </div>
 
 	    </div>
     	 <div class="row">
        	 <div class="col-lg-12">
-              <div class="bs-component">	
+              <div class="bs-component">
 		<h2>Opioid Consumption Clusters</h2>
   		<p class="text-muted"> Based on their opiate consumption data, the chart below uses a statistical method, called multidimensional scaling (MDS), to visualize the level of similarity between countries in the same continent, or among multiple continents. Countries that have similar consumption appear closer together on the chart below. To visualize opiate consumption "clusters" in the chart on the left, indicate continent and opioid classes information in the selection box below. </p>
 	            </div>
 	       </div>
-	  </div>			
+	  </div>
 
 	<div class="row">
   	  <div class="col-lg-2" id="mdsSelect">
@@ -271,7 +271,7 @@
 	    <p>Made by <a href="http://stanford.edu/group/stats-for-good/" rel="nofollow">Stanford Stats for Good</a> in collaboration with <a href="http://globalonc.org/">Global Oncology Initiative (GO!)</a>.</p>
 	    <p>Code can be downloaded from our <a href="https://github.com/krisrs1128/OpioidAtlas">GitHub repository</a> and is released under the MIT License</a>.</p>
 
-	    
+
 	  </div>
 	</div>
 
@@ -361,4 +361,3 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">
 </body>
 </html>
-

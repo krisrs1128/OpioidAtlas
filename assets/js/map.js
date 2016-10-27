@@ -215,5 +215,5 @@ function updateMapColors() {
   if(drug.length == 0) drug = "morphine";
   const mapElem = d3.select("#map");
   const mapDict = getMapDict(incb, countries);
-  updateMap(mapElem, mapDict, drug, year - 1989, mgToColsScale(drug));
+  updateMap(mapElem, mapDict, drug, year - 1990, mgToColsScale(drug));
 }

@@ -99,7 +99,7 @@
 	    <div class="col-lg-2">
 	      <form id="mapSelect" class="well" style="width:150px">
       		<label id="mapDrugInput">Opioid<br><select class="chzn-select" id="drugSelect" style="width:110px"></select></label>
-      		<label id="mapYearInput"><text>Year: 1990</text><input type="range" min="1989" max="2014" value="1990" id="mapSlider", oninput="updateMapColors()" style="width:120px"></label>
+      		<label id="mapYearInput"><text>Year: 1990</text><input type="range" min="1990" max="2014" value="1990" id="mapSlider", oninput="updateMapColors()" style="width:120px"></label>
       	      </form>
   	    </div>
     	    <div id="map" class="col-lg-10">
@@ -203,8 +203,8 @@
     		    <select class="chzn-select" multiple="true" id="regionSelect"></select>
 		  </label>
       		  <label id="locRegYearInput">
-		    <text>Year: 1989</text>
-		    <input type="range" min="1989" max="2013" value="1989" id="locRegSlider", oninput="updateLocReg()">
+		    <text>Year: 1990</text>
+		    <input type="range" min="1990" max="2014" value="1990" id="locRegSlider", oninput="updateLocReg()">
       		  </label>
 		</form>
   	      </div>
@@ -321,8 +321,8 @@
       // add selections for cognostics
       allRegions = ["Asia", "Africa", "Americas", "Europe", "Oceania"]
       const allCogs = ["overall change", "log(overall relative change)",
-      "average 1989 - 1993", "average 1994 - 1998", "average 1999 - 2003",
-      "average 2004 - 2009", "average 2009 - 2013",
+      "average 1990 - 1993", "average 1994 - 1998", "average 1999 - 2003",
+      "average 2004 - 2009", "average 2009 - 2014",
       "maximum one-year increase", "maximum one-year decrease",
       "log(maximum one-year relative increase)",
       "log(maximum one-year relative decrease)"]

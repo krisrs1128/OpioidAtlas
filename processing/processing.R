@@ -7,7 +7,7 @@
 ## ---- setup ----
 # only part of this script that needs to be updated depending on user's
 # directories
-root_dir <- getwd()
+root_dir <- "~/Documents/programming/OpioidAtlas/assets/js"
 
 ## ---- libraries ----
 library("devtools")
@@ -38,7 +38,19 @@ get_incb_df <- function(data_dir = "~/Desktop/opioid_data") {
   mincb$region <- NULL
 
   # use country names compatible with D3
-  matched_countries <- read.csv("https://www.dropbox.com/s/6ljf4yhvph9pzm4/matched_country_names.csv?dl=1")
+  matched_countries <- read.csv(
+    "https://www.dropbox.com/s/6ljf4yhvph9pzm4/matched_country_names.csv?dl=1",
+    stringsAsFactors = FALSE
+  )
+  matched_countries[which(matched_countries$raw_country == "united_states"), "raw_country"] <- "united_states_of_america"
+  matched_countries[which(matched_countries$raw_country == "russia"), "raw_country"] <- "russian_federation"
+  matched_countries[which(matched_countries$raw_country == "bolivia (plurinational state of)"), "raw_country"] <- "bolivia_(plurinational_state_of)"
+  matched_countries[which(matched_countries$raw_country == "venezuela"), "raw_country"] <- "venezuela_(bolivarian_rep._of)"
+  matched_countries[which(matched_countries$raw_country == "lao_people's_democratic_republic"), "raw_country"] <- "lao_people's_democratic_republic_"
+  matched_countries[which(matched_countries$raw_country == "republic of korea"), "raw_country"] <- "republic_of_korea"
+  matched_countries[which(matched_countries$raw_country == "democratic people's republic of korea"), "raw_country"] <- "democratic_people's_republic_of_korea"
+  matched_countries[which(matched_countries$raw_country == "cote_d'ivoire"), "raw_country"] <- "c\364te_d'ivoire"
+
   match_ix <- match(tolower(mincb$country), matched_countries$raw_country)
   country_label <- c("country", "json_country")
   mincb[, country_label] <- matched_countries[match_ix, country_label]
@@ -122,6 +134,7 @@ keep_drugs <- c(
 # only those which are non-na for all years
 #keep_ix <- apply(incb[, keep_drugs], 1, function(x) all(!is.na(x)))
 #incb <- incb[keep_ix, ]
+incb[, keep_drugs][is.na(incb[, keep_drugs])] <- 0
 
 ## ---- equivalents ----
 # convert to morphine equivalents

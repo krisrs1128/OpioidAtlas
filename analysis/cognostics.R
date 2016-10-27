@@ -1,7 +1,7 @@
 
 ################################################################################
 # Script for applying cognostics to the INCB data
-# 
+#
 # csv output available at
 # https://www.dropbox.com/s/7otn4xvru9sqgiq/incb_cogs.csv?dl=0
 # JSON output (used in app) available at
@@ -21,17 +21,15 @@ library("plyr")
 library("dplyr")
 library("zoo")
 
-incb_file <- tempfile()
-download.file("https://www.dropbox.com/s/qxet5l7vdtxo1w3/incb.csv?dl=1", incb_file)
+#incb_file <- tempfile()
+#download.file("https://www.dropbox.com/s/qxet5l7vdtxo1w3/incb.csv?dl=1", incb_file)
+incb_file <- "incb.csv"
 incb <- read.csv(incb_file)
 
 ## ---- reshape-data ----
 # melt by drug
-drug_names <- c("buprenorphine", "codeine", "dihydrocodeine", "ethylmorphine",
-                "hydrocodone", "morphine", "oxycodone", "pholcodine",
-                "dextropropoxyphene", "diphenoxylate", "methadone", "pethidine",
-                "tilidine", "cocaine", "fentanyl", "alfentanil", "remifentanil",
-                "sufentanil", "piritramide", "total")
+drug_names <- c("morphine", "fentanyl", "oxycodone", "pethidine", "hydrocodone",
+                "codeine", "total")
 mincb <- melt(incb, measure.vars = drug_names) %>%
   arrange(country, year)
 

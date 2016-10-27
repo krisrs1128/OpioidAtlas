@@ -1,7 +1,7 @@
 
 ################################################################################
 # Script for computing local regressions on the INCB data
-# 
+#
 # csv output available at
 # https://www.dropbox.com/s/gjgz7c5dn93oyt5/incb_local_reg.csv?dl=0
 # JSON output (used in app) available at
@@ -22,8 +22,9 @@ library("jsonlite")
 library("data.table")
 
 ## ---- data ----
-incb_file <- tempfile()
-download.file("https://www.dropbox.com/s/qxet5l7vdtxo1w3/incb.csv?dl=1", incb_file)
+#incb_file <- tempfile()
+#download.file("https://www.dropbox.com/s/qxet5l7vdtxo1w3/incb.csv?dl=1", incb_file)
+incb_file <- "incb.csv"
 incb <- read.csv(incb_file)
 keep_drugs <- c("morphine", "fentanyl", "oxycodone", "pethidine", "hydrocodone", "codeine", "total")
 
